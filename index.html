@@ -1,3 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Management Tool</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        input, select {
+            padding: 8px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="#">Dashboard</a>
+    <a href="#">Asset Master</a>
+    <a href="#">User Master</a>
+    <a href="#">Allocation</a>
+    <a href="#">Reports</a>
+</div>
+
+<div class="container">
+    <h2>Add Asset</h2>
+
+    <form id="assetForm">
+        <input type="text" placeholder="Asset Code" id="assetCode" required><br><br>
+
+        <select id="assetType">
+            <option>Laptop</option>
+            <option>Desktop</option>
+            <option>Monitor</option>
+        </select><br><br>
+
+        <input type="text" placeholder="Serial No" id="serialNo"><br><br>
+        <input type="text" placeholder="Brand" id="brand"><br><br>
+        <input type="text" placeholder="Model" id="model"><br><br>
+        <input type="text" placeholder="CPU" id="cpu"><br><br>
+        <input type="text" placeholder="RAM" id="ram"><br><br>
+        <input type="text" placeholder="HDD" id="hdd"><br><br>
+
+        <input type="date" id="purchaseDate"><br><br>
+        <input type="text" placeholder="Vendor" id="vendor"><br><br>
+        <input type="text" placeholder="Invoice No" id="invoice"><br><br>
+
+        <input type="date" id="warrantyStart"><br><br>
+        <input type="date" id="warrantyEnd"><br><br>
+
+        <select id="status">
+            <option>Available</option>
+            <option>Assigned</option>
+            <option>Repair</option>
+        </select><br><br>
+
+        <input type="text" placeholder="Remark" id="remark"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+</div>
+
 <script>
 document.getElementById("assetForm").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -38,3 +133,6 @@ document.getElementById("assetForm").addEventListener("submit", function(e) {
     });
 });
 </script>
+
+</body>
+</html>
