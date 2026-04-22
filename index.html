@@ -89,9 +89,12 @@ document.getElementById("assetForm").addEventListener("submit", function(e) {
     };
 
     fetch("https://script.google.com/macros/s/AKfycbxRneDRWcAWJO97KjBoxul1uOF1sUTSy7yUE0P-am9y_TqmrinYxQxZb5pOXuQJDD6T/exec", {
-        method: "POST",
-        body: JSON.stringify(data)
-    })
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+})
     .then(res => res.text())
     .then(response => {
         document.getElementById("message").innerText = "Asset Added Successfully!";
