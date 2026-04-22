@@ -41,9 +41,66 @@
     </div>
 
     <div class="container">
-        <h1>Asset Management System</h1>
-        <p>Select an option from menu</p>
-    </div>
+    <h2>Add Asset</h2>
+
+    <form id="assetForm">
+        <input type="text" placeholder="Asset Code" id="assetCode" required><br><br>
+        <input type="text" placeholder="Asset Type" id="assetType"><br><br>
+        <input type="text" placeholder="Serial No" id="serialNo"><br><br>
+        <input type="text" placeholder="Brand" id="brand"><br><br>
+        <input type="text" placeholder="Model" id="model"><br><br>
+        <input type="text" placeholder="CPU ID" id="cpu"><br><br>
+        <input type="text" placeholder="RAM ID" id="ram"><br><br>
+        <input type="text" placeholder="HDD ID" id="hdd"><br><br>
+        <input type="date" id="purchaseDate"><br><br>
+        <input type="text" placeholder="Vendor" id="vendor"><br><br>
+        <input type="text" placeholder="Invoice No" id="invoice"><br><br>
+        <input type="date" id="warrantyStart"><br><br>
+        <input type="date" id="warrantyEnd"><br><br>
+        <input type="text" placeholder="Status" id="status"><br><br>
+        <input type="text" placeholder="Remark" id="remark"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+</div>
+
+<script>
+document.getElementById("assetForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    var data = {
+        assetCode: document.getElementById("assetCode").value,
+        assetType: document.getElementById("assetType").value,
+        serialNo: document.getElementById("serialNo").value,
+        brand: document.getElementById("brand").value,
+        model: document.getElementById("model").value,
+        cpu: document.getElementById("cpu").value,
+        ram: document.getElementById("ram").value,
+        hdd: document.getElementById("hdd").value,
+        purchaseDate: document.getElementById("purchaseDate").value,
+        vendor: document.getElementById("vendor").value,
+        invoice: document.getElementById("invoice").value,
+        warrantyStart: document.getElementById("warrantyStart").value,
+        warrantyEnd: document.getElementById("warrantyEnd").value,
+        status: document.getElementById("status").value,
+        remark: document.getElementById("remark").value
+    };
+
+    fetch("YOUR_WEB_APP_URL", {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    .then(res => res.text())
+    .then(response => {
+        document.getElementById("message").innerText = "Asset Added Successfully!";
+    })
+    .catch(err => {
+        document.getElementById("message").innerText = "Error adding asset!";
+    });
+});
+</script>
 
 </body>
 </html>
