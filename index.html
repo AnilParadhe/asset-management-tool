@@ -116,22 +116,23 @@ document.getElementById("assetForm").addEventListener("submit", function(e) {
         remark: document.getElementById("remark").value
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbxkBYFPJKw0gjaHRYg741oFVQJGnhFvZVWTtM0qVspbmPkoqSihBxRBXjoprFaN2LaA/exec", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.text())
-    .then(result => {
-        document.getElementById("message").innerText = "✅ Asset Added Successfully!";
-        document.getElementById("assetForm").reset();
-    })
-    .catch(error => {
-        document.getElementById("message").innerText = "❌ Error adding asset!";
-        console.error(error);
-    });
+    const formData = new URLSearchParams();
+
+for (let key in data) {
+    formData.append(key, data[key]);
+}
+
+fetch("https://script.google.com/macros/s/AKfycbxRneDRWcAWJO97KjBoxul1uOF1sUTSy7yUE0P-am9y_TqmrinYxQxZb5pOXuQJDD6T/exec", {
+    method: "POST",
+    body: formData
+})
+.then(() => {
+    document.getElementById("message").innerText = "✅ Asset Added Successfully!";
+    document.getElementById("assetForm").reset();
+})
+.catch(() => {
+    document.getElementById("message").innerText = "❌ Error adding asset!";
+});
 });
 </script>
 
